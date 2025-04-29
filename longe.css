@@ -1,0 +1,538 @@
+/* 基础样式优化 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color:black;
+    line-height: 2;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0086f6;
+}
+
+/* 头部导航栏优化 */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.main-nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav a i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+/* 交换图标 */
+.swap-btn img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    transition: transform 5s ease;
+}
+
+.swap-btn img:hover {
+    transform: rotate(360deg);
+}
+
+/* 搜索区域优化 */
+.search-section {
+    background-color: #0086f6;
+    padding: 30px 0;
+    color: white;
+}
+
+.search-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.search-tabs button {
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 4px 4px 0 0;
+    margin-right: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.search-tabs button.active {
+    background: white;
+    color: #0086f6;
+}
+
+.search-tabs button:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.search-tabs button i {
+    margin-right: 8px;
+}
+
+.search-box {
+    background: white;
+    padding: 25px;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.search-box .form-group {
+    flex: 1 1 calc(25% - 15px);
+    margin-bottom: 15px;
+}
+
+.search-box .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.search-box .form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.search-box .form-group input:focus {
+    border-color: #0086f6;
+    outline: none;
+}
+
+.search-btn {
+    background-color: #ff9d00;
+    padding: 12px 35px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+    margin-top: 15px;
+}
+
+.search-btn:hover {
+    background-color: #ff8c00;
+}
+
+
+
+/* 幻灯片优化 */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin: 30px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.slider img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slider img.active {
+    opacity: 1;
+}
+
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* 幻灯片控制按钮样式 */
+#next-btn,
+#prev-btn {
+    background-color: black;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 1000;
+}
+
+#next-btn:hover,
+#prev-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 热门推荐优化 */
+.recommendations {
+    background-color: #fff;
+    padding: 40px 0;
+    margin: 30px 0;
+}
+
+.recommendations h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.recommendation-item {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.recommendation-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.recommendation-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.recommendation-item .info {
+    padding: 15px;
+}
+
+.recommendation-item h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.recommendation-item p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.recommendation-item .price {
+    color: #ff9d00;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* 特价机票优化 */
+.deals {
+    background-color: #fff;
+    padding: 40px 0;
+    margin: 30px 0;
+}
+
+.deals h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+.deal-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.deal-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.deal-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.deal-item .route {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.deal-item .city {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.deal-item .fa-plane {
+    margin: 0 10px;
+    color: #0086f6;
+}
+
+.deal-item .price {
+    font-size: 22px;
+    color: #ff6347;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.deal-item .date {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.deal-item .book-btn {
+    background-color: #0086f6;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.deal-item .book-btn:hover {
+    background-color: #0077d9;
+}
+
+/* 页脚优化 */
+.footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 50px 0 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.link-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.link-column h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.link-column ul li {
+    margin-bottom: 12px;
+}
+
+.link-column ul li a {
+    font-size: 14px;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.link-column ul li a:hover {
+    color: white;
+}
+
+.social-links {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    background-color: #444;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #0086f6;
+}
+
+.social-links img {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.app-download {
+    margin-top: 15px;
+}
+
+.app-download p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.app-download img {
+    width: 120px;
+    border-radius: 4px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 12px;
+    color: #999;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .search-box .form-group {
+        flex: 1 1 calc(50% - 15px);
+    }
+
+    .search-btn {
+        width: 100%;
+        margin-top: 0;
+        align-self: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 15px 0;
+    }
+    
+    .main-nav li {
+        margin: 5px 10px;
+    }
+    
+    .user-actions {
+        position: static;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    .search-box form {
+        flex-direction: column;
+    }
+    
+    .search-box .form-group {
+        flex: 1 1 100%;
+        margin-bottom: 10px;
+    }
+    
+    .search-btn {
+        width: 100%;
+        margin-top: 0;
+        align-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-box .form-group {
+        flex: 1 1 100%;
+        margin-bottom: 10px;
+    }
+    
+    .search-btn {
+        width: 100%;
+        margin-top: 0;
+        align-self: center;
+    }
+}

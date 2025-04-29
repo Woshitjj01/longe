@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LongeTravel</title>
+    <link rel="stylesheet" href="longe.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#"><img src="./assets/img/loge1.png" alt="LongeTravel"></a>
+            </div>
+            <nav class="main-nav">
+                <ul></ul>
+                    <a href="#flight-search"class="plane"> 机票</a>
+                    <a href="#recommendations"class="ticket-alt"> 热门推荐</a>
+                    <a href="#deals"class="train"> 火车票</a>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="#"><i class="user"></i> 登录/注册</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 幻灯片 -->
+    <section class="slider">
+        <div class="slider-controls">
+            <button id="prev-btn" class="prev-btn">←</button>
+            <button id="next-btn" class="next-btn">→</button>
+        </div>
+        <img src="./assets/img/guilinshanshui.jpg" alt="图片1" class="active">
+        <img src="./assets/img/sheyang.jpg" alt="图片2">
+        <img src="./assets/img/taizhou.jpg" alt="图片3">
+        <img src="./assets/img/zhangjiagang.jpg" alt="图片4">
+    </section>
+
+    <!-- 搜索区域 -->
+     
+    <div class="search-box flight-search active" id="flight-search">
+        <form>
+            <div class="form-row">
+                <h2>搜索机票</h2>
+                <div class="form-group">
+                    <label for="departure"><i class="map-marker-alt"></i> 出发地</label>
+                    <div class="city-selector">
+                        <input type="text" id="departure" placeholder="城市/机场" required>
+                    </div>
+                </div>
+                
+                <button class="swap-btn" type="button" aria-label="交换出发地和目的地">
+                    <img src="./assets/img/change.jpg" alt="交换图标">
+                </button>
+                
+                <div class="form-group">
+                    <label for="arrival"><i class="map-marker-alt"></i> 目的地</label>
+                    <div class="city-selector">
+                        <input type="text" id="arrival" placeholder="城市/机场" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group date-group">
+                    <label for="depart-date"><i class="calendar-alt"></i> 出发日期</label>
+                    <div class="date-input-container">
+                        <input type="datetime-local" id="depart-date" required>
+                    </div>
+                </div>
+                
+                <div class="form-group date-group">
+                    <label for="return-date"><i class="calendar-alt"></i> 返回日期</label>
+                    <div class="date-input-container">
+                        <input type="date" id="return-date" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="passengers"><i class="users"></i> 乘客</label>
+                    <input type="text" id="passengers" placeholder="1成人" readonly>
+                    <div class="passenger-dropdown">
+                        <div class="passenger-type">
+                            <span>成人</span>
+                            <div class="counter">
+                                <button type="button" class="decrement">-</button>
+                                <span>1</span>
+                                <button type="button" class="increment">+</button>
+                            </div>
+                        </div>
+                        <div class="passenger-type">
+                            <span>儿童 (2-11岁)</span>
+                            <div class="counter">
+                                <button type="button" class="decrement">-</button>
+                                <span>0</span>
+                                <button type="button" class="increment">+</button>
+                            </div>
+                        </div>
+                        <div class="passenger-type">
+                            <span>婴儿 (2岁)</span>
+                            <div class="counter">
+                                <button type="button" class="decrement">-</button>
+                                <span>0</span>
+                                <button type="button" class="increment">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cabin-class"><i class="chair"></i> 舱位</label>
+                    <select id="cabin-class">
+                        <option value="economy">经济舱</option>
+                        <option value="business">商务舱</option>
+                        <option value="first">头等舱</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="search-btn">
+                    <i class="search"></i> 搜索机票
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- 热门推荐 -->
+    <section class="recommendations" id="recommendations">
+        <div class="container">
+            <h2>热门推荐</h2>
+            <div class="recommendation-grid">
+                <div class="recommendation-item">
+                    <img src="./assets/img/beijing.jpg" alt="北京">
+                    <div class="info">
+                        <h3>北京</h3>
+                        <p>历史与现代交融的帝都</p>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <img src="./assets/img/shanghai.jpg" alt="上海">
+                    <div class="info">
+                        <h3>上海</h3>
+                        <p>东方巴黎的摩登都市</p>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <img src="./assets/img/lianyungang.jpg" alt="连云港">
+                    <div class="info">
+                        <h3>连云港</h3>
+                        <p>花果山度假胜地</p>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <img src="./assets/img/chengdu.jpg" alt="成都">
+                    <div class="info">
+                        <h3>成都</h3>
+                        <p>美食与熊猫的故乡</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特价火车票 -->
+    <section class="deals" id="deals">
+        <div class="container">
+            <h2>特价火车票</h2>
+            <div class="deal-list">
+                <div class="deal-item">
+                    <div class="route">
+                        <span class="city">北京</span>
+                        <i class="plane"></i>
+                        <span class="city">上海</span>
+                    </div>
+                    <div class="price">¥320</div>
+                    <div class="date">6月15日</div>
+                    <button class="book-btn">预订</button>
+                </div>
+                <div class="deal-item">
+                    <div class="route">
+                        <span class="city">上海</span>
+                        <i class="plane"></i>
+                        <span class="city">成都</span>
+                    </div>
+                    <div class="price">¥280</div>
+                    <div class="date">6月18日</div>
+                    <button class="book-btn">预订</button>
+                </div>
+                <div class="deal-item">
+                    <div class="route">
+                        <span class="city">深圳</span>
+                        <i class="plane"></i>
+                        <span class="city">西安</span>
+                    </div>
+                    <div class="price">¥350</div>
+                    <div class="date">6月20日</div>
+                    <button class="book-btn">预订</button>
+                </div>
+                <div class="deal-item">
+                    <div class="route">
+                        <span class="city">杭州</span>
+                        <i class="plane"></i>
+                        <span class="city">厦门</span>
+                    </div>
+                    <div class="price">¥260</div>
+                    <div class="date">6月22日</div>
+                    <button class="book-btn">预订</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>旅行指南</h4>
+                    <ul>
+                        <li><a href="#">旅游攻略</a></li>
+                        <li><a href="#">景点大全</a></li>
+                        <li><a href="#">旅行保险</a></li>
+                        <li><a href="#">签证服务</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">投诉建议</a></li>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">网站地图</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>关注我们</h4>
+                    <div class="social-links">
+                        <img src="./assets/img/微信图片_20250427133601.png" alt="junyu">
+                        <img src="./assets/img/suofei.jpg" alt="jijun">
+                        <img src="./assets/img/微信图片_20250427134956.jpg" alt="zishu">
+                        <img src="./assets/img/微信图片_20250427135111.jpg" alt="longlong">
+                    </div>
+                    <div class="app-download">
+                        <p>LongeTravel.APP</p>
+                        <img src="./assets/img/loge1.png" alt="APP下载">
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>LongeTravel</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="longe.js"></script>
+</body>
+</html>
