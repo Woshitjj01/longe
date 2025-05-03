@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LongeTravel</title>
     <link rel="stylesheet" href="longe.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- 顶部导航栏 -->
@@ -15,13 +16,13 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <a href="#flight-search"class="plane"> 机票</a>
-                    <a href="#recommendations"class="ticket-alt"> 热门推荐</a>
-                    <a href="#deals"class="train"> 火车票</a>
+                    <li><a href="#search-section"><i class="fas fa-search"></i> 搜索</a></li>
+                    <li><a href="#recommendations"><i class="fas fa-fire"></i> 热门推荐</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> 关于我们</a></li>
                 </ul>
             </nav>
             <div class="user-actions">
-                <a href="#"><i class="user"></i> 登录/注册</a>
+                <a href="#"><i class="fas fa-user"></i> 登录/注册</a>
             </div>
         </div>
     </header>
@@ -29,188 +30,212 @@
     <!-- 幻灯片 -->
     <section class="slider">
         <div class="slider-controls">
-            <button id="prev-btn" class="prev-btn">←</button>
-            <button id="next-btn" class="next-btn">→</button>
+            <button id="prev-btn" class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button id="next-btn" class="next-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
-        <img src="./assets/img/guilinshanshui.jpg" alt="图片1" class="active">
-        <img src="./assets/img/sheyang.jpg" alt="图片2">
-        <img src="./assets/img/taizhou.jpg" alt="图片3">
-        <img src="./assets/img/zhangjiagang.jpg" alt="图片4">
+        <div class="slide active">
+            <img src="./assets/img/guilinshanshui.jpg" alt="桂林山水">
+            <div class="slide-content">
+                <h3>桂林山水甲天下</h3>
+                <p>探索中国最美丽的山水风光</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="./assets/img/sheyang.jpg" alt="射阳">
+            <div class="slide-content">
+                <h3>射阳湿地公园</h3>
+                <p>感受大自然的宁静与美丽</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="./assets/img/taizhou.jpg" alt="泰州">
+            <div class="slide-content">
+                <h3>泰州老街</h3>
+                <p>体验传统与现代的完美融合</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="./assets/img/zhangjiagang.jpg" alt="张家港">
+            <div class="slide-content">
+                <h3>张家港双山岛</h3>
+                <p>长江中的生态绿洲</p>
+            </div>
+        </div>
     </section>
 
     <!-- 搜索区域 -->
-     
-    <div class="search-box flight-search active" id="flight-search">
-        <form>
-            <div class="form-row">
-                <h2>搜索机票</h2>
-                <div class="form-group">
-                    <label for="departure"><i class="map-marker-alt"></i> 出发地</label>
-                    <div class="city-selector">
-                        <input type="text" id="departure" placeholder="城市/机场" required>
-                    </div>
-                </div>
-                
-                <button class="swap-btn" type="button" aria-label="交换出发地和目的地">
-                    <img src="./assets/img/change.jpg" alt="交换图标">
-                </button>
-                
-                <div class="form-group">
-                    <label for="arrival"><i class="map-marker-alt"></i> 目的地</label>
-                    <div class="city-selector">
-                        <input type="text" id="arrival" placeholder="城市/机场" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group date-group">
-                    <label for="depart-date"><i class="calendar-alt"></i> 出发日期</label>
-                    <div class="date-input-container">
-                        <input type="datetime-local" id="depart-date" required>
-                    </div>
-                </div>
-                
-                <div class="form-group date-group">
-                    <label for="return-date"><i class="calendar-alt"></i> 返回日期</label>
-                    <div class="date-input-container">
-                        <input type="date" id="return-date" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="passengers"><i class="users"></i> 乘客</label>
-                </div>
-                    <input type="number" id="passengers" min ="1" max="10" value="1" required>
-                </div>
-                    <div class="passenger-dropdown">
-                        <div class="passenger-type">
-                            <span>成人</span>
-                            <div class="counter">
-                                <button type="button" class="decrement">-</button>
-                                <span>1</span>
-                                <button type="button" class="increment">+</button>
-                            </div>
+    <section class="search-section" id="search-section">
+        <div class="container">
+            <div class="search-box">
+                <form id="search-form">
+                    <div class="form-row">
+                        <h2>开启您的旅程</h2>
+                        <div class="form-group">
+                            <label for="departure"><i class="fas fa-map-marker-alt"></i> 出发地</label>
+                            <input type="text" id="departure" placeholder="城市/机场/车站" required>
                         </div>
-                        <div class="passenger-type">
-                            <span>儿童 (2-11岁)</span>
-                            <div class="counter">
-                                <button type="button" class="decrement">-</button>
-                                <span>0</span>
-                                <button type="button" class="increment">+</button>
-                            </div>
-                        </div>
-                        <div class="passenger-type">
-                            <span>婴儿 (2岁)</span>
-                            <div class="counter">
-                                <button type="button" class="decrement">-</button>
-                                <span>0</span>
-                                <button type="button" class="increment">+</button>
-                            </div>
+                        
+                        <button class="swap-btn" type="button" aria-label="交换出发地和目的地">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        
+                        <div class="form-group">
+                            <label for="arrival"><i class="fas fa-map-marker-alt"></i> 目的地</label>
+                            <input type="text" id="arrival" placeholder="城市/机场/车站" required>
                         </div>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cabin-class"><i class="chair"></i> 舱位</label>
-                    <select id="cabin-class">
-                        <option value="economy">经济舱</option>
-                        <option value="business">商务舱</option>
-                        <option value="first">头等舱</option>
-                    </select>
-                </div>
-            </div>
 
-            <div class="form-actions">
-                <button type="submit" class="search-btn">
-                    <i class="search">购买机票</i> 
-                </button>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="depart-date"><i class="fas fa-calendar-alt"></i> 出发日期</label>
+                            <input type="date" id="depart-date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="return-option"><i class="fas fa-calendar-check"></i> 返程</label>
+                            <select id="return-option">
+                                <option value="one-way">单程</option>
+                                <option value="round-trip">往返</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group return-date-group" style="display:none;">
+                            <label for="return-date"><i class="fas fa-calendar-alt"></i> 返回日期</label>
+                            <input type="date" id="return-date">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passengers"><i class="fas fa-users"></i> 乘客</label>
+                            <div class="passenger-selector">
+                                <input type="text" id="passengers" value="1 成人" readonly>
+                                <div class="passenger-dropdown">
+                                    <div class="passenger-type">
+                                        <span>成人</span>
+                                        <div class="counter">
+                                            <button type="button" class="decrement">-</button>
+                                            <span class="count">1</span>
+                                            <button type="button" class="increment">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="passenger-type">
+                                        <span>儿童 (2-11岁)</span>
+                                        <div class="counter">
+                                            <button type="button" class="decrement">-</button>
+                                            <span class="count">0</span>
+                                            <button type="button" class="increment">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="passenger-type">
+                                        <span>婴儿 (2岁以下)</span>
+                                        <div class="counter">
+                                            <button type="button" class="decrement">-</button>
+                                            <span class="count">0</span>
+                                            <button type="button" class="increment">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="travel-type"><i class="fas fa-route"></i> 交通方式</label>
+                            <select id="travel-type">
+                                <option value="flight">飞机</option>
+                                <option value="train">火车</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i> 搜索
+                        </button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
+        </div>
+    </section>
+
+    <!-- 票务搜索结果 -->
+    <section class="results-section" id="results" style="display:none;">
+        <div class="container">
+            <h2>搜索结果</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-type="outbound">去程</button>
+                <button class="tab-btn" data-type="return" style="display:none;">返程</button>
+            </div>
+            <div class="results-grid" id="outbound-results">
+                <!-- 动态生成搜索结果 -->
+            </div>
+            <div class="results-grid" id="return-results" style="display:none;">
+                <!-- 动态生成返程搜索结果 -->
+            </div>
+            <div class="booking-summary" id="booking-summary" style="display:none;">
+                <h3>预订摘要</h3>
+                <div class="summary-content"></div>
+                <button class="confirm-btn">确认预订</button>
+            </div>
+        </div>
+    </section>
+
     <!-- 热门推荐 -->
     <section class="recommendations" id="recommendations">
         <div class="container">
             <h2>热门推荐</h2>
             <div class="recommendation-grid">
                 <div class="recommendation-item">
-                    <img src="./assets/img/beijing.jpg" alt="北京">
+                    <div class="video-container">
+                        <video muted loop>
+                            <source src="./assets/videos/beijing.mp4" type="video/mp4">
+                        </video>
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
                     <div class="info">
                         <h3>北京</h3>
                         <p>历史与现代交融的帝都</p>
+                        <div class="price">从 ¥580 起</div>
                     </div>
                 </div>
                 <div class="recommendation-item">
-                    <img src="./assets/img/shanghai.jpg" alt="上海">
+                    <div class="video-container">
+                        <video muted loop>
+                            <source src="./assets/videos/shanghai.mp4" type="video/mp4">
+                        </video>
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
                     <div class="info">
                         <h3>上海</h3>
                         <p>东方巴黎的摩登都市</p>
+                        <div class="price">从 ¥480 起</div>
                     </div>
                 </div>
                 <div class="recommendation-item">
-                    <img src="./assets/img/lianyungang.jpg" alt="连云港">
+                    <div class="video-container">
+                        <video muted loop>
+                            <source src="./assets/videos/lianyungang.mp4" type="video/mp4">
+                        </video>
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
                     <div class="info">
                         <h3>连云港</h3>
                         <p>花果山度假胜地</p>
+                        <div class="price">从 ¥320 起</div>
                     </div>
                 </div>
                 <div class="recommendation-item">
-                    <img src="./assets/img/chengdu.jpg" alt="成都">
+                    <div class="video-container">
+                        <video muted loop>
+                            <source src="./assets/videos/chengdu.mp4" type="video/mp4">
+                        </video>
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
                     <div class="info">
                         <h3>成都</h3>
                         <p>美食与熊猫的故乡</p>
+                        <div class="price">从 ¥450 起</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 特价火车票 -->
-    <section class="deals" id="deals">
-        <div class="container">
-            <h2>特价火车票</h2>
-            <div class="deal-list">
-                <div class="deal-item">
-                    <div class="route">
-                        <span class="city">北京</span>
-                        <i class="plane"></i>
-                        <span class="city">上海</span>
-                    </div>
-                    <div class="price">¥320</div>
-                    <div class="date">6月15日</div>
-                    <button class="book-btn">预订</button>
-                </div>
-                <div class="deal-item">
-                    <div class="route">
-                        <span class="city">上海</span>
-                        <i class="plane"></i>
-                        <span class="city">成都</span>
-                    </div>
-                    <div class="price">¥280</div>
-                    <div class="date">6月18日</div>
-                    <button class="book-btn">预订</button>
-                </div>
-                <div class="deal-item">
-                    <div class="route">
-                        <span class="city">深圳</span>
-                        <i class="plane"></i>
-                        <span class="city">西安</span>
-                    </div>
-                    <div class="price">¥350</div>
-                    <div class="date">6月20日</div>
-                    <button class="book-btn">预订</button>
-                </div>
-                <div class="deal-item">
-                    <div class="route">
-                        <span class="city">杭州</span>
-                        <i class="plane"></i>
-                        <span class="city">厦门</span>
-                    </div>
-                    <div class="price">¥260</div>
-                    <div class="date">6月22日</div>
-                    <button class="book-btn">预订</button>
                 </div>
             </div>
         </div>
@@ -219,50 +244,23 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <div class="link-column">
-                    <h4>关于我们</h4>
-                    <ul>
-                        <li><a href="#">公司简介</a></li>
-                        <li><a href="#">联系我们</a></li>
-                        <li><a href="#">加入我们</a></li>
-                        <li><a href="#">隐私政策</a></li>
-                    </ul>
-                </div>
-                <div class="link-column">
-                    <h4>旅行指南</h4>
-                    <ul>
-                        <li><a href="#">旅游攻略</a></li>
-                        <li><a href="#">景点大全</a></li>
-                        <li><a href="#">旅行保险</a></li>
-                        <li><a href="#">签证服务</a></li>
-                    </ul>
-                </div>
-                <div class="link-column">
-                    <h4>帮助中心</h4>
-                    <ul>
-                        <li><a href="#">常见问题</a></li>
-                        <li><a href="#">投诉建议</a></li>
-                        <li><a href="#">用户协议</a></li>
-                        <li><a href="#">网站地图</a></li>
-                    </ul>
-                </div>
+            <div class="footer-links">    
                 <div class="link-column">
                     <h4>关注我们</h4>
                     <div class="social-links">
-                        <img src="./assets/img/微信图片_20250427133601.png" alt="junyu">
-                        <img src="./assets/img/suofei.jpg" alt="jijun">
-                        <img src="./assets/img/微信图片_20250427134956.jpg" alt="zishu">
-                        <img src="./assets/img/微信图片_20250427135111.jpg" alt="longlong">
+                        <a href="#"><img src="./assets/img/suofei.jpg" alt="微信"></a>
+                        <a href="#"><img src="./assets/img/微信图片_20250427133601.png" alt="微博"></a>
+                        <a href="#"><img src="./assets/img/微信图片_20250427134956.jpg" alt="QQ"></a>
+                        <a href="#"><img src="./assets/img/微信图片_20250427135111.jpg "alt="抖音"></a>
                     </div>
                     <div class="app-download">
-                        <p>LongeTravel.APP</p>
-                        <img src="./assets/img/loge1.png" alt="APP下载">
+                        <p>下载LongeTravel APP</p>
+                        <img src="./assets/img/loge1.png" alt="App Store">                      
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>LongeTravel Welcome everybody!</p>
+                <p>Welcome to LongeTravel!</p>
             </div>
         </div>
     </footer>
