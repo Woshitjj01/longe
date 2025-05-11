@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", function() {
     function showSlide(index) {
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
+            slide.setAttribute('aria-hidden', i !== index);
+            if (i === index) {
+                slide.setAttribute('aria-live', 'polite');
+            } else {
+                slide.removeAttribute('aria-live');
+            }
         });
     }
 
@@ -21,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function startSlider() {
-        slideInterval = setInterval(nextSlide, 3000);
+        slideInterval = setInterval(nextSlide, 5000);
     }
 
     function stopSlider() {
@@ -40,12 +46,70 @@ document.addEventListener("DOMContentLoaded", function() {
         startSlider();
     });
 
+    // 键盘导航支持
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            stopSlider();
+            nextSlide();
+            startSlider();
+        } else if (e.key === 'ArrowLeft') {
+            stopSlider();
+            prevSlide();
+            startSlider();
+        }
+    });
+
     // 鼠标悬停时暂停自动播放
     const slider = document.querySelector('.slider');
     slider.addEventListener('mouseenter', stopSlider);
     slider.addEventListener('mouseleave', startSlider);
+    slider.addEventListener('focusin', stopSlider);
+    slider.addEventListener('focusout', startSlider);
 
+    // 触摸设备支持
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopSlider();
+    }, {passive: true});
+    
+    slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startSlider();
+    }, {passive: true});
+
+    function handleSwipe() {
+        const threshold = 50;
+        if (touchStartX - touchEndX > threshold) {
+            nextSlide();
+        } else if (touchEndX - touchStartX > threshold) {
+            prevSlide();
+        }
+    }
+
+    // 响应式调整
+    function handleResize() {
+        const sliderHeight = window.innerWidth < 768 ? 
+            (window.innerWidth < 480 ? 300 : 400) : 500;
+        document.querySelector('.slider').style.height = `${sliderHeight}px`;
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    // 初始化轮播
+    showSlide(0);
     startSlider();
+
+    // 为幻灯片添加ARIA角色
+    slides.forEach((slide, index) => {
+        slide.setAttribute('role', 'group');
+        slide.setAttribute('aria-roledescription', 'slide');
+        slide.setAttribute('aria-label', `${index + 1} of ${slides.length}`);
+    });
 
     // 交换出发地和目的地
     const swapButton = document.querySelector('.swap-btn');
@@ -133,31 +197,58 @@ document.addEventListener("DOMContentLoaded", function() {
     const bookingSummary = document.getElementById('booking-summary');
     const summaryContent = document.querySelector('.summary-content');
 
-    // 模拟票务数据
-    const flightData = [
-        { from: '北京', to: '上海', departTime: '08:00', arriveTime: '10:30', type: '经济舱', price: 580, airline: '中国航空', flightNo: 'CA1234' },
-        { from: '北京', to: '上海', departTime: '10:30', arriveTime: '13:00', type: '商务舱', price: 1200, airline: '东方航空', flightNo: 'MU5678' },
-        { from: '北京', to: '上海', departTime: '14:00', arriveTime: '16:30', type: '经济舱', price: 650, airline: '南方航空', flightNo: 'CZ9012' },
-        { from: '北京', to: '上海', departTime: '18:00', arriveTime: '20:30', type: '头等舱', price: 1800, airline: '海南航空', flightNo: 'HU3456' }
-    ];
+    // 动态生成票务数据
+    function generateTicketData(from, to, type) {
 
-    const trainData = [
-        { from: '北京', to: '上海', departTime: '07:00', arriveTime: '12:30', type: '二等座', price: 553, trainNo: 'G101' },
-        { from: '北京', to: '上海', departTime: '09:00', arriveTime: '14:30', type: '一等座', price: 933, trainNo: 'G103' },
-        { from: '北京', to: '上海', departTime: '11:00', arriveTime: '16:30', type: '商务座', price: 1748, trainNo: 'G105' },
-        { from: '北京', to: '上海', departTime: '13:00', arriveTime: '18:30', type: '二等座', price: 553, trainNo: 'G107' }
-    ];
+        const routeKey = `${from}-${to}`;
+        const data = type === 'flight' ? baseData : trainBaseData;
+        
+        if (!data[routeKey]) {
+            return [
+                {
+                    from: from,
+                    to: to,
+                    departTime: '08:00', 
+                    arriveTime: '10:30', 
+                    type: type === 'flight' ? '经济舱' : '二等座', 
+                    price: type === 'flight' ? 600 : 500,
+                    [type === 'flight' ? 'airline' : 'trainNo']: type === 'flight' ? '中国航空 CA1234' : 'G101'
+                },
+                {
+                    from: from,
+                    to: to,
+                    departTime: '12:00', 
+                    arriveTime: '14:30', 
+                    type: type === 'flight' ? '商务舱' : '一等座', 
+                    price: type === 'flight' ? 1200 : 900,
+                    [type === 'flight' ? 'airline' : 'trainNo']: type === 'flight' ? '东方航空 MU5678' : 'G103'
+                }
+            ];
+        }
+        
+        return data[routeKey].map(item => ({
+            from: from,
+            to: to,
+            ...item
+        }));
+    }
 
     searchForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const departure = departureInput.value;
-        const arrival = arrivalInput.value;
+        const departure = departureInput.value.trim();
+        const arrival = arrivalInput.value.trim();
         const departDate = document.getElementById('depart-date').value;
         const isRoundTrip = returnOption.value === 'round-trip';
         const returnDate = isRoundTrip ? document.getElementById('return-date').value : null;
         const travelType = document.getElementById('travel-type').value;
         const passengers = passengerInput.value;
+        
+        // 验证输入
+        if (!departure || !arrival) {
+            alert('请输入出发地和目的地');
+            return;
+        }
         
         // 显示搜索结果区域
         resultsSection.style.display = 'block';
@@ -165,8 +256,8 @@ document.addEventListener("DOMContentLoaded", function() {
         returnResults.innerHTML = '';
         bookingSummary.style.display = 'none';
         
-        // 根据选择的交通方式获取数据
-        const data = travelType === 'flight' ? flightData : trainData;
+        // 根据用户输入动态生成票务数据
+        const data = generateTicketData(departure, arrival, travelType);
         
         // 生成去程票务
         data.forEach(item => {
@@ -209,12 +300,14 @@ document.addEventListener("DOMContentLoaded", function() {
             const summaryType = tabType === 'outbound' ? '去程' : '返程';
             
             // 添加到预订摘要
-            summaryContent.innerHTML += `
-                <div class="summary-item">
-                    <span>${summaryType}: ${item.from} → ${item.to}</span>
-                    <span>¥${item.price}</span>
-                </div>
+            const summaryItem = document.createElement('div');
+            summaryItem.className = 'summary-item';
+            summaryItem.dataset.type = tabType;
+            summaryItem.innerHTML = `
+                <span>${summaryType}: ${item.from} → ${item.to}</span>
+                <span>¥${item.price}</span>
             `;
+            summaryContent.appendChild(summaryItem);
             
             // 显示预订摘要
             bookingSummary.style.display = 'block';
@@ -224,8 +317,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.querySelector('.tab-btn[data-type="return"]').click();
                 
                 // 生成返程票务
-                trainData.forEach(item => {
-                    const returnTicket = createTicketElement(item, type);
+                const departure = document.getElementById('departure').value.trim();
+                const arrival = document.getElementById('arrival').value.trim();
+                const travelType = document.getElementById('travel-type').value;
+                const returnData = generateTicketData(arrival, departure, travelType);
+                
+                returnResults.innerHTML = '';
+                returnData.forEach(item => {
+                    const returnTicket = createTicketElement(item, travelType);
                     returnResults.appendChild(returnTicket);
                 });
             } else {
@@ -250,6 +349,33 @@ document.addEventListener("DOMContentLoaded", function() {
             
             document.getElementById(`${type}-results`).style.display = 'grid';
         });
+    });
+
+    // 确认预订按钮
+    document.querySelector('.confirm-btn').addEventListener('click', function() {
+        const isRoundTrip = document.getElementById('return-option').value === 'round-trip';
+        const hasOutbound = document.querySelector('.summary-item[data-type="outbound"]');
+        const hasReturn = document.querySelector('.summary-item[data-type="return"]');
+        
+        if (isRoundTrip && !hasReturn) {
+            alert('您还没有选择返程票');
+            return;
+        }
+        
+        // 清空表单和搜索结果
+        document.getElementById('search-form').reset();
+        resultsSection.style.display = 'none';
+        bookingSummary.style.display = 'none';
+        summaryContent.innerHTML = '';
+        
+        // 显示成功消息
+        alert('预定成功，祝您旅游愉快！');
+        
+        // 重置乘客计数器
+        document.querySelectorAll('.count').forEach((count, index) => {
+            count.textContent = index === 0 ? '1' : '0';
+        });
+        document.getElementById('passengers').value = '1 成人';
     });
 
     // 热门推荐视频播放控制
