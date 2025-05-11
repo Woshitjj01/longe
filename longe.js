@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function startSlider() {
-        slideInterval = setInterval(nextSlide, 5000);
+        slideInterval = setInterval(nextSlide, 3000);
     }
 
     function stopSlider() {

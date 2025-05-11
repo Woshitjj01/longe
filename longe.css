@@ -5,7 +5,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     line-height: 1.6;
-    background: url('./assets/img/两仪式.gif')no-repeat center center fixed ;
+    background: url('./assets/img/绘梨衣.jpg')no-repeat center center fixed ;
     background-size: cover;
     position: relative;
 }
@@ -180,10 +180,51 @@ a:hover {
     transform: scale(1.1);
 }
 
+/* 文章部分的样式 */
+.travel-tips {
+    background-color: rgba(0.0.0.0);
+    padding: 50px 0;
+    margin: 30px 0;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.travel-tips h2 {
+    text-align: center;
+    color: #0086f6;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.travel-tips section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: (0.0.0.0);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.travel-tips h3 {
+    color: #333;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0086f6;
+}
+
+.travel-tips ul {
+    padding-left: 20px;
+}
+
+.travel-tips li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
 /* 搜索区域优化 */
 .search-section {
     padding: 50px 0;
     position: relative;
+    text-align: center;
 }
 
 .search-section::before {
@@ -198,10 +239,12 @@ a:hover {
 }
 
 .search-box {
-    background: (0.0.0);
+    background: rgba(255, 255, 255, 0.8); 
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    max-width: 600px; 
+    margin: 0 auto; 
 }
 
 .search-box h2 {
@@ -210,6 +253,7 @@ a:hover {
     margin-bottom: 25px;
     font-size: 1.8rem;
     text-align: center;
+    
 }
 
 .form-row {
@@ -721,6 +765,12 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+
+    .search-box {
+        padding: 20px;
+        font-size: 14px; /* 减小字体大小以适应小屏幕 */
+    }
+
     .header .container {
         flex-direction: column;
         gap: 15px;
