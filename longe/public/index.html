@@ -211,6 +211,46 @@
         <div class="recommendation-container">
             <div class="recommendation-grid" id="recommendation-grid">
                 <!-- 动态显示视频 -->
+                <div class="recommendation-item">
+                    <video controls>
+                        <source src="../../assets/video/beijin.mp4" type="video/mp4">
+                       
+                    </video>
+                    <h3>桂林山水</h3>
+                    <p>探索中国最美丽的山水风光</p>
+                </div>
+                <div class="recommendation-item">
+                    <video controls>
+                        <source src="../../assets/video/changsha.mp4" type="video/mp4">
+                        
+                    </video>
+                    <h3>射阳湿地公园</h3>
+                    <p>感受大自然的宁静与美丽</p>
+                </div>
+                <div class="recommendation-item">
+                    <video controls>
+                        <source src="../../assets/video/chengdu.mp4" type="video/mp4">
+                       
+                    </video>
+                    <h3>泰州老街</h3>
+                    <p>体验传统与现代的完美融合</p>
+                </div>
+                <div class="recommendation-item">
+                    <video controls>
+                        <source src="../../assets/video/guangzhou.mp4" type="video/mp4">
+                        
+                    </video>
+                    <h3>张家港双山岛</h3>
+                    <p>长江中的生态绿洲</p>
+                </div>
+                <div class="recommendation-item">
+                    <video controls>
+                        <source src="../../assets/video/lianyungang.mp4" type="video/mp4">
+                        
+                    </video>
+                    <h3>黄山</h3>
+                    <p>五岳归来不看山，黄山归来不看岳</p>
+                </div>
             </div>
         </div>
         <button class="btn btn-primary" id="shuffle-btn">换一批</button>
@@ -400,9 +440,6 @@
             </form>
         </div>
 
-
-
-
         <div class="container">
             <div class="footer-links">    
                 <div class="link-column"id ="about">
@@ -425,6 +462,7 @@
         </div>
     </footer>
     <script src="../dist/js/longe.js"></script>
+   <script src="../dist/js/video.js"></script>
    
 <script>
 import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
@@ -451,17 +489,18 @@ export default {
       if (!this.$v.$invalid) {
         // 表单验证通过，提交注册逻辑
         console.log("注册成功！", {
-          username: this.username,
-          email: this.email,
-          password: this.password,
-        });
+  username: this.username,
+  email: this.email,
+  password: this.password,
+});
+
         // 这里可以添加将数据发送到后端的逻辑
       } else {
         console.log("表单验证失败");
       }
        toggleRegister() {
             this.isRegisterVisible = !this.isRegisterVisible; // 切换注册页面的显示状态
-        },
+        }
     },
   },
 };
