@@ -24,13 +24,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#search-section"><i class="fas fa-search"></i> 搜索</a>
+                            <a class="nav-link" href="#search-section"><i class="fas fa-search"></i> search</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#recommendations"><i class="fas fa-fire"></i> 热门推荐</a>
+                            <a class="nav-link" href="#recommendations"><i class="fas fa-fire"></i> Popular Recommendations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> 关于我们</a>
+                            <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> connect with us</a>
                         </li>
                     </ul>
                     <a href="#footer" class="nav-link" @click="toggleRegister">
@@ -182,10 +182,10 @@
     <!-- 票务搜索结果 -->
     <section class="results-section" id="results" style="display:none;">
         <div class="container">
-            <h2>搜索结果</h2>
+            <h2>Search results</h2>
             <div class="tabs">
-                <button class="tab-btn active" data-type="outbound">去程</button>
-                <button class="tab-btn" data-type="return" style="display:none;">返程</button>
+                <button class="tab-btn active" data-type="outbound">Outbound trip</button>
+                <button class="tab-btn" data-type="return" style="display:none;">Return trip</button>
             </div>
             <div class="results-grid" id="outbound-results">
                 <!-- 动态生成搜索结果 -->
@@ -194,9 +194,9 @@
                 <!-- 动态生成返程搜索结果 -->
             </div>
             <div class="booking-summary" id="booking-summary" style="display:none;">
-                <h3>预订摘要</h3>
+                <h3>Booking summary</h3>
                 <div class="summary-content"></div>
-                <button class="confirm-btn">确认预订</button>
+                <button class="confirm-btn">Confirm booking</button>
             </div>
         </div>
     </section>
@@ -204,7 +204,7 @@
     <!-- 热门推荐 -->
 <section class="recommendations" id="recommendations">
     <div class="container">
-        <h2>热门推荐</h2>
+        <h2>Popular Recommendations</h2>
         <div class="recommendation-container">
             <div class="recommendation-grid" id="recommendation-grid">
                 <!-- 动态显示视频 -->
@@ -213,44 +213,43 @@
                         <source src="./assets/video/beijin.mp4" type="video/mp4">
                        
                     </video>
-                    <h3>桂林山水</h3>
-                    <p>探索中国最美丽的山水风光</p>
+                    <h3>Beijing's landscape</h3>
+                    <p>Explore the most beautiful landscapes of China.</p>
                 </div>
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/changsha.mp4" type="video/mp4">
                         
                     </video>
-                    <h3>射阳湿地公园</h3>
-                    <p>感受大自然的宁静与美丽</p>
+                    <h3>Shayang Wetland Park</h3>
+                    <p>Experience the tranquility and beauty of nature.</p>
                 </div>
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/chengdu.mp4" type="video/mp4">
                        
                     </video>
-                    <h3>泰州老街</h3>
-                    <p>体验传统与现代的完美融合</p>
-                </div>
+                    <h3>Taizhou Old Street</h3>
+                    <p>Experience the traditional and modern fusion.</p>
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/guangzhou.mp4" type="video/mp4">
                         
                     </video>
-                    <h3>张家港双山岛</h3>
-                    <p>长江中的生态绿洲</p>
+                    <h3>Shuangshan Island, Zhangjiagang</h3>
+                    <p>Ecological Oasis in the Yangtze River</p>
                 </div>
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/lianyungang.mp4" type="video/mp4">
                         
                     </video>
-                    <h3>黄山</h3>
-                    <p>五岳归来不看山，黄山归来不看岳</p>
+                    <h3>Yellow Mountain</h3>
+                    <p>After returning from the Five Mountains, one does not look at other mountains; after returning from Huangshan, one does not look at the Five Mountains.</p>
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" id="shuffle-btn">换一批</button>
+        <button class="btn btn-primary" id="shuffle-btn">Change a batch</button>
     </div>
 </section>
 
@@ -258,21 +257,18 @@
     <main role="main">
         <article class="travel-tips" role="article" aria-labelledby="travel-tips-heading">
     <div class="container">
-        <h2 id="travel-tips-heading">旅行常见问题</h2>
+        <h2 id="travel-tips-heading">Frequently Asked Questions about Travel</h2>
         <div class="accordion" id="travelTipsAccordion">
             <div class="accordion-item">
                 <h3 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        如何预订最优惠的机票？
+                        How to book the cheapest flight?
                     </button>
                 </h3>
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#travelTipsAccordion">
                     <div class="accordion-body">
                         <ul>
-                            <li>提前2-3个月预订通常能获得最佳价格</li>
-                            <li>使用比价网站比较不同航空公司的价格</li>
-                            <li>考虑周二、周三出行，这些日子通常票价较低</li>
-                            <li>设置价格提醒，在价格下降时及时购买</li>
+                            <li>Booking 2-3 months in advance usually secures the best prices</li><li>Use comparison websites to compare prices from different airlines</li><li>Consider traveling on Tuesdays and Wednesdays, as these days typically have lower fares</li><li>Set up price alerts to purchase when prices drop</li>
                         </ul>
                     </div>
                 </div>
@@ -280,16 +276,13 @@
             <div class="accordion-item">
                 <h3 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        旅行时如何保障财物安全？
+                        How to ensure the safety of belongings while traveling?
                     </button>
                 </h3>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#travelTipsAccordion">
                     <div class="accordion-body">
                         <ul>
-                            <li>使用酒店保险箱存放护照和贵重物品</li>
-                            <li>随身携带少量现金，分散存放</li>
-                            <li>使用防盗背包或腰包</li>
-                            <li>为贵重物品拍照存档，以便遗失时申报</li>
+                            <li>Use the hotel safe to store passports and valuables</li><li>Carry a small amount of cash, stored in different places</li><li>Use anti-theft backpacks or waist bags</li><li>Take photos of valuable items for records, in case they are lost</li>
                         </ul>
                     </div>
                 </div>
@@ -297,16 +290,13 @@
             <div class="accordion-item">
                 <h3 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        如何克服时差问题？
+                        How to overcome jet lag?
                     </button>
                 </h3>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#travelTipsAccordion">
                     <div class="accordion-body">
                         <ul>
-                            <li>出发前几天开始调整作息时间</li>
-                            <li>飞行期间多喝水，避免酒精和咖啡因</li>
-                            <li>到达后尽量按照当地时间作息</li>
-                            <li>白天多晒太阳，帮助调节生物钟</li>
+                           <li>Start adjusting your schedule a few days before departure</li><li>Drink plenty of water during the flight, avoid alcohol and caffeine</li><li>Try to follow the local time for your schedule after arrival</li><li>Get plenty of sunlight during the day to help regulate your biological clock</li>
                         </ul>
                     </div>
                 </div>
@@ -314,16 +304,13 @@
             <div class="accordion-item">
                 <h3 class="accordion-header" id="headingFour">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        独自旅行有哪些注意事项？
+                        What are the precautions for traveling alone?
                     </button>
                 </h3>
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#travelTipsAccordion">
                     <div class="accordion-body">
                         <ul>
-                            <li>提前告知家人或朋友你的行程安排</li>
-                            <li>选择安全指数高的住宿区域</li>
-                            <li>避免夜间单独外出</li>
-                            <li>随身携带紧急联系信息</li>
+                            <li>Inform your family or friends about your travel plans in advance</li><li>Choose accommodation areas with a high safety index</li><li>Avoid going out alone at night</li><li>Carry emergency contact information with you</li>
                         </ul>
                     </div>
                 </div>
@@ -331,16 +318,13 @@
             <div class="accordion-item">
                 <h3 class="accordion-header" id="headingFive">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        如何应对旅行中的突发状况？
+                        How to deal with unexpected situations while traveling?
                     </button>
                 </h3>
                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#travelTipsAccordion">
                     <div class="accordion-body">
                         <ul>
-                            <li>保存当地紧急电话号码和大使馆联系方式</li>
-                            <li>购买包含医疗和行程变更的旅行保险</li>
-                            <li>随身携带常用药品和急救包</li>
-                            <li>电子设备中保存重要文件的扫描件</li>
+                            <li>Save local emergency phone numbers and embassy contact information</li><li>Purchase travel insurance that includes medical coverage and itinerary changes</li><li>Carry commonly used medications and a first aid kit</li><li>Store scanned copies of important documents on electronic devices</li>
                         </ul>
                     </div>
                 </div>
@@ -348,16 +332,13 @@
             <div class="accordion-item">
                 <h3 class="accordion-header" id="headingSix">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                        如何避免旅行中的文化冲突？
+                        How to avoid cultural conflicts during travel?
                     </button>
                 </h3>
                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#travelTipsAccordion">
                     <div class="accordion-body">
                         <ul>
-                            <li>出发前了解目的地的基本礼仪和文化禁忌</li>
-                            <li>学习简单的当地语言问候语</li>
-                            <li>尊重当地风俗习惯和宗教信仰</li>
-                            <li>观察当地人的行为方式并适当模仿</li>
+                            <li>Understand the basic etiquette and cultural taboos of the destination before departure</li><li>Learn simple local language greetings</li><li>Respect local customs and religious beliefs</li><li>Observe the behavior of local people and mimic it appropriately</li>
                         </ul>
                     </div>
                 </div>
@@ -375,10 +356,10 @@
  <div id="app">
         <!-- 注册页面 -->
         <div class="register-container" v-if="isRegisterVisible">
-            <h2>注册</h2>
+            <h2>register</h2>
             <form @submit.prevent="submitForm" class="register-form">
                 <div class="form-group">
-                    <label for="username">用户名</label>
+                    <label for="username">name</label>
                     <input
                         type="text"
                         id="username"
@@ -386,13 +367,13 @@
                         :class="{ 'is-invalid': $v.username.$invalid && $v.username.$dirty }"
                     />
                     <div v-if="$v.username.$dirty" class="invalid-feedback">
-                        <span v-if="!$v.username.required">用户名不能为空</span>
-                        <span v-else-if="!$v.username.minLength">用户名至少需要 6 个字符</span>
+                        <span v-if="!$v.username.required">Username cannot be empty.</span>
+                        <span v-else-if="!$v.username.minLength">The username must be at least 6 characters long.</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">邮箱</label>
+                    <label for="email">email</label>
                     <input
                         type="email"
                         id="email"
@@ -400,13 +381,13 @@
                         :class="{ 'is-invalid': $v.email.$invalid && $v.email.$dirty }"
                     />
                     <div v-if="$v.email.$dirty" class="invalid-feedback">
-                        <span v-if="!$v.email.required">邮箱不能为空</span>
-                        <span v-else-if="!$v.email.email">请输入有效的邮箱地址</span>
+                        <span v-if="!$v.email.required">Email cannot be empty.</span>
+                        <span v-else-if="!$v.email.email">Please enter a valid email address.</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">密码</label>
+                    <label for="password">password</label>
                     <input
                         type="password"
                         id="password"
@@ -414,13 +395,13 @@
                         :class="{ 'is-invalid': $v.password.$invalid && $v.password.$dirty }"
                     />
                     <div v-if="$v.password.$dirty" class="invalid-feedback">
-                        <span v-if="!$v.password.required">密码不能为空</span>
-                        <span v-else-if="!$v.password.minLength">密码至少需要 8 个字符</span>
+                        <span v-if="!$v.password.required">Password cannot be empty.</span>
+                        <span v-else-if="!$v.password.minLength">The password must be at least 8 characters long.</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm-password">确认密码</label>
+                    <label for="confirm-password">confirm password</label>
                     <input
                         type="password"
                         id="confirm-password"
@@ -428,18 +409,18 @@
                         :class="{ 'is-invalid': $v.confirmPassword.$invalid && $v.confirmPassword.$dirty }"
                     />
                     <div v-if="$v.confirmPassword.$dirty" class="invalid-feedback">
-                        <span v-if="!$v.confirmPassword.required">确认密码不能为空</span>
-                        <span v-if="!$v.confirmPassword.sameAsPassword">两次密码不一致</span>
+                        <span v-if="!$v.confirmPassword.required">Confirm password cannot be empty</span>
+                        <span v-else-if="!$v.confirmPassword.sameAsPassword">The passwords do not match.</span>
                     </div>
                 </div>
-                <button type="submit" class="submit-btn">注册</button>
+                <button type="submit" class="submit-btn">submit</button>
             </form>
         </div>
 
         <div class="container">
             <div class="footer-links">    
                 <div class="link-column"id ="about">
-                    <h4>关于我们</h4>
+                    <h4>connect us</h4>
                     <div class="social-links">
                         <a href="#"><img src="./assets/img/微信图片_20250427133601.png" alt="1"></a>
                         <a href="#"><img src="./assets/img/微信图片_20250427134956.jpg" alt="2"></a>
@@ -447,7 +428,7 @@
                         <a href="#"><img src="./assets/img/suofei.jpg "alt="4"></a>
                     </div>
                     <div class="app-download">
-                        <p>下载LongeTravel APP</p>
+                        <p>download LongeTravel APP</p>
                         <img src="./assets/img/loge1.png" alt="App Store">                      
                     </div>
                 </div>

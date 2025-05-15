@@ -245,7 +245,7 @@ const trainBaseData = {
         
         // 验证输入
         if (!departure || !arrival) {
-            alert('请输入出发地和目的地');
+            alert('Please enter the departure and destination.');
             return;
         }
         
@@ -289,7 +289,7 @@ const trainBaseData = {
                 <div class="ticket-type">${type === 'flight' ? item.airline + ' ' + item.flightNo : '高铁 ' + item.trainNo} · ${item.type}</div>
             </div>
             <div class="ticket-price">¥${item.price}</div>
-            <button class="ticket-select">选择</button>
+            <button class="ticket-select">choose</button>
         `;
         
         // 添加选择按钮事件
@@ -368,7 +368,7 @@ const trainBaseData = {
         summaryContent.innerHTML = '';
         
         // 显示成功消息
-        alert('预定成功，祝您旅游愉快！');
+        alert('have a nice trip!');
         
         // 重置乘客计数器
         document.querySelectorAll('.count').forEach((count, index) => {
@@ -378,59 +378,7 @@ const trainBaseData = {
     });
 // 视频推荐功能
 
-    const allVideos = [
-       {
-           src: './assets/video/beijin.mp4',
-           title: '北京',
-           description: '皇城根下聚风云，胡同烟火藏古今'
-       },
-       {
-           src: './assets/video/shanghai.mp4',
-           title: '上海',
-           description: '外滩霓虹照繁华，石库门里品烟火'
-        },  
-        {
-            src: './assets/video/lianyungang.mp4',
-            title: '连云港',
-            description: '西游山海揽胜境，陆桥枢纽连亚欧'
-        },
-        {
-            src: './assets/video/chengdu.mp4',
-            title: '成都',
-            description: '宽窄巷里品悠闲，蓉城烟火三千年'
-        },
-        {
-            src: './assets/video/shenzhen.mp4',
-            title: '深圳',
-            description: '改革速度闯未来，山海连城弄新潮'
-        },
-        {
-            src: './assets/video/suzhou.mp4',
-            title: '苏州',
-            description: '小桥流水枕河眠，粉墙黛瓦画中游'
-        },
-        {
-            src: './assets/video/nanjing.mp4',
-            title: '南京',
-            description: '梧桐深处藏王气，一座金陵半部史'
-        },
-        {
-            src: './assets/video/nanchang.mp4',
-            title: '南昌',
-            description: '红色故都耀古今，赣江两岸焕新辉'
-        },
-        {
-            src: './assets/video/changsha.mp4',
-            title: '长沙',
-            description: '湖湘文化发源地，现代娱乐之都'
-        },
-        {
-            src: './assets/video/guangzhou.mp4',
-            title: '广州',
-            description: '早茶飘香烟火旺，珠江潮涌世界窗'
-        },
-
-        ];
+    const allVideos = [ { src: './assets/video/beijin.mp4', title: 'Beijing', description: 'Under the royal city, clouds gather; the alleyways harbor ancient and modern flavors.' }, { src: './assets/video/shanghai.mp4', title: 'Shanghai', description: 'Neon lights illuminate the Bund, savor the local life in Shikumen.' }, { src: './assets/video/lianyungang.mp4', title: 'Lianyungang', description: 'Western Journey through mountains and seas, a land bridge connecting Asia and Europe.' }, { src: './assets/video/chengdu.mp4', title: 'Chengdu', description: 'Leisurely experiences in Kuan Zhai Alley; the city of Chengdu has a history spanning three thousand years.' }, { src: './assets/video/shenzhen.mp4', title: 'Shenzhen', description: 'Reform speed paves the future; mountains and seas connect the city with new trends.' }, { src: './assets/video/suzhou.mp4', title: 'Suzhou', description: 'Small bridges and flowing water allow for peaceful slumber, painting brings life to the white walls and black tiles.' }, { src: './assets/video/nanjing.mp4', title: 'Nanjing', description: 'Within the sycamore trees lies imperial power; Nanjing is half a history of Jinling.' }, { src: './assets/video/nanchang.mp4', title: 'Nanchang', description: 'The red former capital shines through time, the banks of Gan River radiate new brilliance.' }, { src: './assets/video/changsha.mp4', title: 'Changsha', description: 'The birthplace of Huxiang culture, a metropolis of modern entertainment.' }, { src: './assets/video/guangzhou.mp4', title: 'Guangzhou', description: 'Morning tea wafts fragrant, the Pearl River surges as a window to the world.' } ];
 
         // 初始化当前展示的视频索引
         let currentVideoIndex = 0;
