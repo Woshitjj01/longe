@@ -170,7 +170,7 @@ a:hover {
 }
 
 .search-box {
-    background: rgba(255, 255, 255, 0.8); 
+    background: transparent; 
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
@@ -473,11 +473,11 @@ a:hover {
 
 .recommendation-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 每行两列 */
-    gap: 20px; /* 视频之间的间距 */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
     width: 100%;
-    max-width: 1200px; /* 限制最大宽度，防止太宽 */
-    margin: 0 auto; /* 居中 */
+    max-width: 1200px;
+    margin: 0 auto; 
 }
 
 #shuffle-btn {
@@ -497,8 +497,8 @@ a:hover {
 }
 
 .recommendation-item {
-    width: 100%; /* 让每个视频项填满网格单元格 */
-    aspect-ratio: 16 / 9; /* 保持视频宽高比（16:9） */
+    width: 100%; 
+    aspect-ratio: 16 / 9; 
     position: relative;
     overflow: hidden;
     border-radius: 8px;
