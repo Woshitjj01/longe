@@ -376,7 +376,117 @@ const trainBaseData = {
         });
         document.getElementById('passengers').value = '1 成人';
     });
+// 视频推荐功能
 
+    const allVideos = [
+       {
+           src: './assets/video/beijin.mp4',
+           title: '北京',
+           description: '皇城根下聚风云，胡同烟火藏古今'
+       },
+       {
+           src: './assets/video/shanghai.mp4',
+           title: '上海',
+           description: '外滩霓虹照繁华，石库门里品烟火'
+        },  
+        {
+            src: './assets/video/lianyungang.mp4',
+            title: '连云港',
+            description: '西游山海揽胜境，陆桥枢纽连亚欧'
+        },
+        {
+            src: './assets/video/chengdu.mp4',
+            title: '成都',
+            description: '宽窄巷里品悠闲，蓉城烟火三千年'
+        },
+        {
+            src: './assets/video/shenzhen.mp4',
+            title: '深圳',
+            description: '改革速度闯未来，山海连城弄新潮'
+        },
+        {
+            src: './assets/video/suzhou.mp4',
+            title: '苏州',
+            description: '小桥流水枕河眠，粉墙黛瓦画中游'
+        },
+        {
+            src: './assets/video/nanjing.mp4',
+            title: '南京',
+            description: '梧桐深处藏王气，一座金陵半部史'
+        },
+        {
+            src: './assets/video/nanchang.mp4',
+            title: '南昌',
+            description: '红色故都耀古今，赣江两岸焕新辉'
+        },
+        {
+            src: './assets/video/changsha.mp4',
+            title: '长沙',
+            description: '湖湘文化发源地，现代娱乐之都'
+        },
+        {
+            src: './assets/video/guangzhou.mp4',
+            title: '广州',
+            description: '早茶飘香烟火旺，珠江潮涌世界窗'
+        },
+
+        ];
+
+        // 初始化当前展示的视频索引
+        let currentVideoIndex = 0;
+
+function createVideoElement(video) {
+    const videoItem = document.createElement('div');
+    videoItem.className = 'recommendation-item';
+    videoItem.innerHTML = `
+        <div class="video-container">
+            <video muted loop>
+              <source src="${video.src}" type="video/mp4">
+            </video>
+        </div>
+        <div class="info">
+        <h3>${video.title}</h3>
+        <p>${video.description}</p>
+        </div>
+    `;
+    // 添加播放控制
+    const videoEl = videoItem.querySelector('video');
+    const playBtn = videoItem.querySelector('.play-btn');
+    
+    videoItem.addEventListener('mouseenter', () => {
+        videoEl.play().catch(e => console.error("播放失败:", e));
+    });
+
+    videoItem.addEventListener('mouseleave', () => {
+        videoEl.pause();
+    });
+    return videoItem;
+}
+// 展示视频的函数
+function showVideos() {
+    const recommendationGrid = document.getElementById('recommendation-grid');
+    recommendationGrid.innerHTML = '';
+
+    for (let i = 0; i < 4; i++) {
+        const index = (currentVideoIndex + i) % allVideos.length;
+        const video = allVideos[index];
+        const videoElement = createVideoElement(video);
+        recommendationGrid.appendChild(videoElement);
+    }
+}
+
+// 换一批按钮的点击事件处理函数
+function shuffleVideos() {
+    currentVideoIndex = (currentVideoIndex + 5) % allVideos.length;
+    showVideos();
+}
+
+// 页面加载完成后初始化视频展示
+window.addEventListener('load', function() {
+    showVideos();
+    const shuffleBtn = document.getElementById('shuffle-btn');
+    shuffleBtn.addEventListener('click', shuffleVideos);
+});
 
 
 
