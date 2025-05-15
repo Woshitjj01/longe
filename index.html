@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,39 +7,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./longe/public/longe.css">
-    
 </head>
 
 <body>
-        <!-- 顶部导航栏 -->
-        <header class="header navbar navbar-expand-lg navbar-light bg-light sticky-top">
-            <div class="container">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex justify-content-center">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                            <img src="./assets/img/loge1.png" alt="Toggle navigation" height="40">
-                        </button>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#search-section"><i class="fas fa-search"></i> search</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#recommendations"><i class="fas fa-fire"></i> Popular Recommendations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> connect with us</a>
-                        </li>
-                    </ul>
-                    <a href="#footer" class="nav-link" @click="toggleRegister">
-                        <i class="fas fa-user"></i> Log in/Register </a>
+    <!-- Top Navigation Bar -->
+    <header class="header navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex justify-content-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <img src="./assets/img/loge1.png" alt="Toggle navigation" height="40">
+                    </button>
                 </div>
             </div>
-            </header>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search-section"><i class="fas fa-search"></i> Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#recommendations"><i class="fas fa-fire"></i> Popular Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> Contact Us</a>
+                    </li>
+                </ul>
+                <a href="#footer" class="nav-link" @click="toggleRegister">
+                    <i class="fas fa-user"></i> Login/Register </a>
+            </div>
+        </div>
+    </header>
 
-    <!-- 幻灯片 -->
+    <!-- Slideshow -->
     <section class="slider" role="region" aria-label="Tourist destination carousel">
         <div class="slider-controls">
             <button id="prev-btn" class="prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -76,15 +75,13 @@
         <div class="slide">
             <img src="./assets/img/huangshan.jpg"alt="huangshan">
             <div class="slide-content">
-                <h3>huangshan</h3>
+                <h3>Huangshan Mountain</h3>
                 <p>The five mountains meet each other in the middle of the Yangtze River.</p>
             </div>
         </div>
     </section>
 
-
-
-    <!-- 搜索区域 -->
+    <!-- Search Section -->
     <section class="search-section" id="search-section">
         <div class="container">
             <div class="search-box">
@@ -113,7 +110,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="return-option"><i class="fas fa-calendar-check"></i> Return trip</label>
+                            <label for="return-option"><i class="fas fa-calendar-check"></i> Trip type</label>
                             <select id="return-option">
                                 <option value="one-way">One way</option>
                                 <option value="round-trip">Round trip</option>
@@ -133,7 +130,7 @@
                                 <input type="text" id="passengers" value="1 adult" readonly>
                                 <div class="passenger-dropdown">
                                     <div class="passenger-type">
-                                        <span>adult</span>
+                                        <span>Adult</span>
                                         <div class="counter">
                                             <button type="button" class="decrement">-</button>
                                             <span class="count">1</span>
@@ -141,7 +138,7 @@
                                         </div>
                                     </div>
                                     <div class="passenger-type">
-                                        <span>Children (2-11 years old)</span>
+                                        <span>Children (2-11 years)</span>
                                         <div class="counter">
                                             <button type="button" class="decrement">-</button>
                                             <span class="count">0</span>
@@ -149,7 +146,7 @@
                                         </div>
                                     </div>
                                     <div class="passenger-type">
-                                        <span>Infant (under 2 years old)</span>
+                                        <span>Infant (under 2 years)</span>
                                         <div class="counter">
                                             <button type="button" class="decrement">-</button>
                                             <span class="count">0</span>
@@ -163,7 +160,7 @@
                         <div class="form-group">
                             <label for="travel-type"><i class="fas fa-route"></i> Transportation</label>
                             <select id="travel-type">
-                                <option value="flight">airplane</option>
+                                <option value="flight">Airplane</option>
                                 <option value="train">Train</option>
                             </select>
                         </div>
@@ -171,7 +168,7 @@
 
                     <div class="form-actions">
                         <button type="submit" class="search-btn">
-                            <i class="fas fa-search"></i> search
+                            <i class="fas fa-search"></i> Search
                         </button>
                     </div>
                 </form>
@@ -179,47 +176,45 @@
         </div>
     </section>
 
-    <!-- 票务搜索结果 -->
+    <!-- Search Results -->
     <section class="results-section" id="results" style="display:none;">
         <div class="container">
-            <h2>Search results</h2>
+            <h2>Search Results</h2>
             <div class="tabs">
-                <button class="tab-btn active" data-type="outbound">Outbound trip</button>
-                <button class="tab-btn" data-type="return" style="display:none;">Return trip</button>
+                <button class="tab-btn active" data-type="outbound">Outbound</button>
+                <button class="tab-btn" data-type="return" style="display:none;">Return</button>
             </div>
             <div class="results-grid" id="outbound-results">
-                <!-- 动态生成搜索结果 -->
+                <!-- Dynamic search results -->
             </div>
             <div class="results-grid" id="return-results" style="display:none;">
-                <!-- 动态生成返程搜索结果 -->
+                <!-- Dynamic return results -->
             </div>
             <div class="booking-summary" id="booking-summary" style="display:none;">
-                <h3>Booking summary</h3>
+                <h3>Booking Summary</h3>
                 <div class="summary-content"></div>
-                <button class="confirm-btn">Confirm booking</button>
+                <button class="confirm-btn">Confirm Booking</button>
             </div>
         </div>
     </section>
 
-    <!-- 热门推荐 -->
+    <!-- Popular Recommendations -->
 <section class="recommendations" id="recommendations">
     <div class="container">
-        <h2>Popular Recommendations</h2>
+        <h2>Popular Destinations</h2>
         <div class="recommendation-container">
             <div class="recommendation-grid" id="recommendation-grid">
-                <!-- 动态显示视频 -->
+                <!-- Dynamic video display -->
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/beijin.mp4" type="video/mp4">
-                       
                     </video>
-                    <h3>Beijing's landscape</h3>
+                    <h3>Beijing's Landscape</h3>
                     <p>Explore the most beautiful landscapes of China.</p>
                 </div>
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/changsha.mp4" type="video/mp4">
-                        
                     </video>
                     <h3>Shayang Wetland Park</h3>
                     <p>Experience the tranquility and beauty of nature.</p>
@@ -227,14 +222,12 @@
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/chengdu.mp4" type="video/mp4">
-                       
                     </video>
                     <h3>Taizhou Old Street</h3>
                     <p>Experience the traditional and modern fusion.</p>
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/guangzhou.mp4" type="video/mp4">
-                        
                     </video>
                     <h3>Shuangshan Island, Zhangjiagang</h3>
                     <p>Ecological Oasis in the Yangtze River</p>
@@ -242,22 +235,21 @@
                 <div class="recommendation-item">
                     <video controls>
                         <source src="./assets/video/lianyungang.mp4" type="video/mp4">
-                        
                     </video>
                     <h3>Yellow Mountain</h3>
                     <p>After returning from the Five Mountains, one does not look at other mountains; after returning from Huangshan, one does not look at the Five Mountains.</p>
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" id="shuffle-btn">Change a batch</button>
+        <button class="btn btn-primary" id="shuffle-btn">Show More</button>
     </div>
 </section>
 
-    <!-- 旅游小tips -->
+    <!-- Travel Tips -->
     <main role="main">
         <article class="travel-tips" role="article" aria-labelledby="travel-tips-heading">
     <div class="container">
-        <h2 id="travel-tips-heading">Frequently Asked Questions about Travel</h2>
+        <h2 id="travel-tips-heading">Travel FAQs</h2>
         <div class="accordion" id="travelTipsAccordion">
             <div class="accordion-item">
                 <h3 class="accordion-header" id="headingOne">
@@ -348,88 +340,90 @@
 </article>
     </main>
 
-
-    <!-- 页脚 -->
-    <footer class="footer" id="footer">
-        
-        <!-- 注册登录弹窗 -->
- <div id="app">
-        <!-- 注册页面 -->
+    <!-- Footer -->
+<footer class="footer" id="footer">
+    <!-- Register/Login Modal -->
+    <div id="app">
+        <!-- Register Form -->
         <div class="register-container" v-if="isRegisterVisible">
-            <h2>register</h2>
+            <h2>Register</h2>
             <form @submit.prevent="submitForm" class="register-form">
                 <div class="form-group">
-                    <label for="username">name</label>
+                    <label for="username">Username</label>
                     <input
                         type="text"
                         id="username"
-                        v-model="username"
-                        :class="{ 'is-invalid': $v.username.$invalid && $v.username.$dirty }"
+                        v-model="form.username"
+                        @blur="v$.username.$touch()"
+                        :class="{ 'is-invalid': v$.username.$error }"
                     />
-                    <div v-if="$v.username.$dirty" class="invalid-feedback">
-                        <span v-if="!$v.username.required">Username cannot be empty.</span>
-                        <span v-else-if="!$v.username.minLength">The username must be at least 6 characters long.</span>
+                    <div v-if="v$.username.$error" class="invalid-feedback">
+                        <span v-if="!v$.username.required">Username cannot be empty.</span>
+                        <span v-else-if="!v$.username.minLength">Username must be at least 6 characters.</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">email</label>
+                    <label for="email">Email</label>
                     <input
                         type="email"
                         id="email"
-                        v-model="email"
-                        :class="{ 'is-invalid': $v.email.$invalid && $v.email.$dirty }"
+                        v-model="form.email"
+                        @blur="v$.email.$touch()"
+                        :class="{ 'is-invalid': v$.email.$error }"
                     />
-                    <div v-if="$v.email.$dirty" class="invalid-feedback">
-                        <span v-if="!$v.email.required">Email cannot be empty.</span>
-                        <span v-else-if="!$v.email.email">Please enter a valid email address.</span>
+                    <div v-if="v$.email.$error" class="invalid-feedback">
+                        <span v-if="!v$.email.required">Email cannot be empty.</span>
+                        <span v-else-if="!v$.email.email">Please enter a valid email address.</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">password</label>
+                    <label for="password">Password</label>
                     <input
                         type="password"
                         id="password"
-                        v-model="password"
-                        :class="{ 'is-invalid': $v.password.$invalid && $v.password.$dirty }"
+                        v-model="form.password"
+                        @blur="v$.password.$touch()"
+                        :class="{ 'is-invalid': v$.password.$error }"
                     />
-                    <div v-if="$v.password.$dirty" class="invalid-feedback">
-                        <span v-if="!$v.password.required">Password cannot be empty.</span>
-                        <span v-else-if="!$v.password.minLength">The password must be at least 8 characters long.</span>
+                    <div v-if="v$.password.$error" class="invalid-feedback">
+                        <span v-if="!v$.password.required">Password cannot be empty.</span>
+                        <span v-else-if="!v$.password.minLength">Password must be at least 8 characters.</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm-password">confirm password</label>
+                    <label for="confirm-password">Confirm Password</label>
                     <input
                         type="password"
                         id="confirm-password"
-                        v-model="confirmPassword"
-                        :class="{ 'is-invalid': $v.confirmPassword.$invalid && $v.confirmPassword.$dirty }"
+                        v-model="form.confirmPassword"
+                        @blur="v$.confirmPassword.$touch()"
+                        :class="{ 'is-invalid': v$.confirmPassword.$error }"
                     />
-                    <div v-if="$v.confirmPassword.$dirty" class="invalid-feedback">
-                        <span v-if="!$v.confirmPassword.required">Confirm password cannot be empty</span>
-                        <span v-else-if="!$v.confirmPassword.sameAsPassword">The passwords do not match.</span>
+                    <div v-if="v$.confirmPassword.$error" class="invalid-feedback">
+                        <span v-if="!v$.confirmPassword.required">Confirm password cannot be empty.</span>
+                        <span v-else-if="!v$.confirmPassword.sameAs">Passwords do not match.</span>
                     </div>
                 </div>
-                <button type="submit" class="submit-btn">submit</button>
+                <button type="submit" class="submit-btn">Submit</button>
             </form>
         </div>
 
         <div class="container">
-            <div class="footer-links">    
-                <div class="link-column"id ="about">
-                    <h4>connect us</h4>
+            <div class="footer-links">
+                <div class="link-column" id="about">
+                    <h4>Contact Us</h4>
                     <div class="social-links">
                         <a href="#"><img src="./assets/img/微信图片_20250427133601.png" alt="1"></a>
-                        <a href="#"><img src="./assets/img/微信图片_20250427134956.jpg" alt="2"></a>
+                        <a href="#"><img src="./assets/img/微信图片_20250427134955.jpg" alt="2"></a>
                         <a href="#"><img src="./assets/img/微信图片_20250427135111.jpg" alt="3"></a>
-                        <a href="#"><img src="./assets/img/suofei.jpg "alt="4"></a>
+                        <a href="#"><img src="./assets/img/suofei.jpg" alt="4"></a>
                     </div>
                     <div class="app-download">
-                        <p>download LongeTravel APP</p>
-                        <img src="./assets/img/loge1.png" alt="App Store">                      
+                        <p>Download LongeTravel APP</p>
+                        <img src="./assets/img/loge1.png" alt="App Store">
                     </div>
                 </div>
             </div>
@@ -437,44 +431,78 @@
                 <p>Welcome to LongeTravel!</p>
             </div>
         </div>
-    </footer>
-    <script src="./longe/public/longe.js"></script>
-   
-<script>
-import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
+    </div>
+</footer>
 
-export default {
-  data() {
-    return {
-    isRegisterVisible: false, 
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    };
-  },
-  validations: {
-    username: { required, minLength: minLength(6) },
-    email: { required, email },
-    password: { required, minLength: minLength(8) },
-    confirmPassword: { required, sameAsPassword: sameAs("password") },
-  },
-  methods: {
-    submitForm() {
-      this.$v.$touch();
-      if (!this.$v.$invalid) {
-        // 表单验证通过，提交注册逻辑
-        console.log("注册成功！", {
-  username: this.username,
-  email: this.email,
-  password: this.password,
-});
-      } else {
-        console.log("表单验证失败");
-      }
-    },
-  },
-};
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuelidate@2.0.0-alpha.27/dist/vuelidate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuelidate/validators@2.0.1/dist/validators.min.js"></script>
+<script src="./longe/public/longe.js"></script>
+
+<script>
+const { createApp, ref, onMounted } = Vue;
+const { useVuelidate } = Vuelidate;
+const { required, minLength, email, sameAs } = VuelidateValidators;
+
+createApp({
+    setup() {
+        const isRegisterVisible = ref(false);
+        const form = ref({
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        });
+
+        const rules = {
+            username: { required, minLength: minLength(6) },
+            email: { required, email },
+            password: { required, minLength: minLength(8) },
+            confirmPassword: { required, sameAs: sameAs(() => form.value.password) }
+        };
+
+        const v$ = useVuelidate(rules, form);
+
+        const submitForm = async () => {
+            const isValid = await v$.value.$validate();
+            
+            if (isValid) {
+                console.log("Registration successful!", {
+                    username: form.value.username,
+                    email: form.value.email,
+                    password: form.value.password
+                });
+                // Here you would typically make an API call to register the user
+            } else {
+                console.log("Form validation failed");
+            }
+        };
+
+        // 显示注册表单的函数
+        const showRegisterForm = () => {
+            isRegisterVisible.value = true;
+        };
+
+        // 在组件挂载后添加事件监听
+        onMounted(() => {
+            // 查找所有指向footer的链接并添加点击事件
+            document.querySelectorAll('a[href="#footer"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // 阻止默认行为
+                    showRegisterForm();
+                });
+            });
+        });
+
+        return {
+            isRegisterVisible,
+            form,
+            v$,
+            submitForm,
+            showRegisterForm
+        };
+    }
+}).mount('#app');
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 幻灯片功能
+    // Slideshow functionality
     const slides = document.querySelectorAll('.slide');
     let currentIndex = 0;
     let slideInterval;
@@ -45,14 +45,15 @@ document.addEventListener("DOMContentLoaded", function() {
         prevSlide();
         startSlider();
     });
-    // 鼠标悬停时暂停自动播放
+    
+    // Pause autoplay on hover
     const slider = document.querySelector('.slider');
     slider.addEventListener('mouseenter', stopSlider);
     slider.addEventListener('mouseleave', startSlider);
     slider.addEventListener('focusin', stopSlider);
     slider.addEventListener('focusout', startSlider);
 
-    // 触摸设备支持
+    // Touch device support
     let touchStartX = 0;
     let touchEndX = 0;
     
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // 响应式调整
+    // Responsive adjustments
     function handleResize() {
         const sliderHeight = window.innerWidth < 768 ? 
             (window.innerWidth < 480 ? 300 : 400) : 500;
@@ -86,18 +87,18 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', handleResize);
     handleResize();
 
-    // 初始化轮播
+    // Initialize slideshow
     showSlide(0);
     startSlider();
 
-    // 为幻灯片添加ARIA角色
+    // Add ARIA roles to slides
     slides.forEach((slide, index) => {
         slide.setAttribute('role', 'group');
         slide.setAttribute('aria-roledescription', 'slide');
         slide.setAttribute('aria-label', `${index + 1} of ${slides.length}`);
     });
 
-    // 交换出发地和目的地
+    // Swap departure and arrival
     const swapButton = document.querySelector('.swap-btn');
     const departureInput = document.getElementById('departure');
     const arrivalInput = document.getElementById('arrival');
@@ -108,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
         arrivalInput.value = temp;
     });
 
-    // 乘客人数计数器
+    // Passenger counter
     const passengerSelector = document.querySelector('.passenger-selector');
     const passengerInput = document.getElementById('passengers');
     const passengerDropdown = document.querySelector('.passenger-dropdown');
@@ -153,14 +154,14 @@ document.addEventListener("DOMContentLoaded", function() {
         const infantCount = parseInt(document.querySelector('.passenger-type:nth-child(3) .count').textContent);
         
         let passengerText = '';
-        if (adultCount > 0) passengerText += `${adultCount} 成人`;
-        if (childCount > 0) passengerText += `${passengerText ? '，' : ''}${childCount} 儿童`;
-        if (infantCount > 0) passengerText += `${passengerText ? '，' : ''}${infantCount} 婴儿`;
+        if (adultCount > 0) passengerText += `${adultCount} adult`;
+        if (childCount > 0) passengerText += `${passengerText ? ', ' : ''}${childCount} child`;
+        if (infantCount > 0) passengerText += `${passengerText ? ', ' : ''}${infantCount} infant`;
         
-        passengerInput.value = passengerText || '1 成人';
+        passengerInput.value = passengerText || '1 adult';
     }
 
-    // 返程选项切换
+    // Round trip option toggle
     const returnOption = document.getElementById('return-option');
     const returnDateGroup = document.querySelector('.return-date-group');
 
@@ -174,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // 搜索表单提交
+    // Search form submission
     const searchForm = document.getElementById('search-form');
     const resultsSection = document.getElementById('results');
     const outboundResults = document.getElementById('outbound-results');
@@ -183,21 +184,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const bookingSummary = document.getElementById('booking-summary');
     const summaryContent = document.querySelector('.summary-content');
 
-    // 动态生成票务数据
+    // Generate ticket data dynamically
     function generateTicketData(from, to, type) {
-
         const baseData = {
-    "北京-上海": [
-        { departTime: "08:00", arriveTime: "10:30", airline: "中国航空", flightNo: "CA1234", type: "经济舱", price: 600 },
-        { departTime: "12:00", arriveTime: "14:30", airline: "东方航空", flightNo: "MU5678", type: "商务舱", price: 1200 }
-    ]
-};
-const trainBaseData = {
-    "北京-上海": [
-        { departTime: "09:00", arriveTime: "11:30", trainNo: "G101", type: "二等座", price: 500 },
-        { departTime: "13:00", arriveTime: "15:30", trainNo: "G103", type: "一等座", price: 900 }
-    ]
-};
+            "Beijing-Shanghai": [
+                { departTime: "08:00", arriveTime: "10:30", airline: "China Airlines", flightNo: "CA1234", type: "Economy", price: 600 },
+                { departTime: "12:00", arriveTime: "14:30", airline: "Eastern Airlines", flightNo: "MU5678", type: "Business", price: 1200 }
+            ]
+        };
+        const trainBaseData = {
+            "Beijing-Shanghai": [
+                { departTime: "09:00", arriveTime: "11:30", trainNo: "G101", type: "Second Class", price: 500 },
+                { departTime: "13:00", arriveTime: "15:30", trainNo: "G103", type: "First Class", price: 900 }
+            ]
+        };
 
         const routeKey = `${from}-${to}`;
         const data = type === 'flight' ? baseData : trainBaseData;
@@ -209,18 +209,18 @@ const trainBaseData = {
                     to: to,
                     departTime: '08:00', 
                     arriveTime: '10:30', 
-                    type: type === 'flight' ? '经济舱' : '二等座', 
+                    type: type === 'flight' ? 'Economy' : 'Second Class', 
                     price: type === 'flight' ? 600 : 500,
-                    [type === 'flight' ? 'airline' : 'trainNo']: type === 'flight' ? '中国航空 CA1234' : 'G101'
+                    [type === 'flight' ? 'airline' : 'trainNo']: type === 'flight' ? 'China Airlines CA1234' : 'G101'
                 },
                 {
                     from: from,
                     to: to,
                     departTime: '12:00', 
                     arriveTime: '14:30', 
-                    type: type === 'flight' ? '商务舱' : '一等座', 
+                    type: type === 'flight' ? 'Business' : 'First Class', 
                     price: type === 'flight' ? 1200 : 900,
-                    [type === 'flight' ? 'airline' : 'trainNo']: type === 'flight' ? '东方航空 MU5678' : 'G103'
+                    [type === 'flight' ? 'airline' : 'trainNo']: type === 'flight' ? 'Eastern Airlines MU5678' : 'G103'
                 }
             ];
         }
@@ -243,35 +243,35 @@ const trainBaseData = {
         const travelType = document.getElementById('travel-type').value;
         const passengers = passengerInput.value;
         
-        // 验证输入
+        // Validate input
         if (!departure || !arrival) {
             alert('Please enter the departure and destination.');
             return;
         }
         
-        // 显示搜索结果区域
+        // Show results section
         resultsSection.style.display = 'block';
         outboundResults.innerHTML = '';
         returnResults.innerHTML = '';
         bookingSummary.style.display = 'none';
         
-        // 根据用户输入动态生成票务数据
+        // Generate ticket data based on user input
         const data = generateTicketData(departure, arrival, travelType);
         
-        // 生成去程票务
+        // Generate outbound tickets
         data.forEach(item => {
             const ticketElement = createTicketElement(item, travelType);
             outboundResults.appendChild(ticketElement);
         });
         
-        // 如果是往返，显示返程标签
+        // If round trip, show return tab
         returnTab.style.display = isRoundTrip ? 'block' : 'none';
         
-        // 滚动到搜索结果
+        // Scroll to results
         resultsSection.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // 创建票务元素
+    // Create ticket element
     function createTicketElement(item, type) {
         const ticket = document.createElement('div');
         ticket.className = 'ticket-item';
@@ -286,19 +286,19 @@ const trainBaseData = {
                     <span class="ticket-city">${item.to}</span>
                 </div>
                 <div class="ticket-time">${item.departTime} - ${item.arriveTime}</div>
-                <div class="ticket-type">${type === 'flight' ? item.airline + ' ' + item.flightNo : '高铁 ' + item.trainNo} · ${item.type}</div>
+                <div class="ticket-type">${type === 'flight' ? item.airline + ' ' + item.flightNo : 'High Speed Rail ' + item.trainNo} · ${item.type}</div>
             </div>
             <div class="ticket-price">¥${item.price}</div>
-            <button class="ticket-select">choose</button>
+            <button class="ticket-select">Select</button>
         `;
         
-        // 添加选择按钮事件
+        // Add select button event
         const selectBtn = ticket.querySelector('.ticket-select');
         selectBtn.addEventListener('click', function() {
             const tabType = document.querySelector('.tab-btn.active').dataset.type;
-            const summaryType = tabType === 'outbound' ? '去程' : '返程';
+            const summaryType = tabType === 'outbound' ? 'Outbound' : 'Return';
             
-            // 添加到预订摘要
+            // Add to booking summary
             const summaryItem = document.createElement('div');
             summaryItem.className = 'summary-item';
             summaryItem.dataset.type = tabType;
@@ -308,14 +308,14 @@ const trainBaseData = {
             `;
             summaryContent.appendChild(summaryItem);
             
-            // 显示预订摘要
+            // Show booking summary
             bookingSummary.style.display = 'block';
             
-            // 如果是去程且选择了往返，切换到返程标签
+            // If outbound and round trip selected, switch to return tab
             if (tabType === 'outbound' && returnTab.style.display === 'block') {
                 document.querySelector('.tab-btn[data-type="return"]').click();
                 
-                // 生成返程票务
+                // Generate return tickets
                 const departure = document.getElementById('departure').value.trim();
                 const arrival = document.getElementById('arrival').value.trim();
                 const travelType = document.getElementById('travel-type').value;
@@ -327,7 +327,7 @@ const trainBaseData = {
                     returnResults.appendChild(returnTicket);
                 });
             } else {
-                // 滚动到预订摘要
+                // Scroll to booking summary
                 bookingSummary.scrollIntoView({ behavior: 'smooth' });
             }
         });
@@ -335,7 +335,7 @@ const trainBaseData = {
         return ticket;
     }
 
-    // 标签切换功能
+    // Tab switching functionality
     document.querySelectorAll('.tab-btn').forEach(tab => {
         tab.addEventListener('click', function() {
             document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
@@ -350,100 +350,110 @@ const trainBaseData = {
         });
     });
 
-    // 确认预订按钮
+    // Confirm booking button
     document.querySelector('.confirm-btn').addEventListener('click', function() {
         const isRoundTrip = document.getElementById('return-option').value === 'round-trip';
         const hasOutbound = document.querySelector('.summary-item[data-type="outbound"]');
         const hasReturn = document.querySelector('.summary-item[data-type="return"]');
         
         if (isRoundTrip && !hasReturn) {
-            alert('您还没有选择返程票');
+            alert('You have not selected a return ticket');
             return;
         }
         
-        // 清空表单和搜索结果
+        // Clear form and results
         document.getElementById('search-form').reset();
         resultsSection.style.display = 'none';
         bookingSummary.style.display = 'none';
         summaryContent.innerHTML = '';
         
-        // 显示成功消息
-        alert('have a nice trip!');
+        // Show success message
+        alert('Have a nice trip!');
         
-        // 重置乘客计数器
+        // Reset passenger counters
         document.querySelectorAll('.count').forEach((count, index) => {
             count.textContent = index === 0 ? '1' : '0';
         });
-        document.getElementById('passengers').value = '1 成人';
-    });
-// 视频推荐功能
-
-    const allVideos = [ { src: './assets/video/beijin.mp4', title: 'Beijing', description: 'Under the royal city, clouds gather; the alleyways harbor ancient and modern flavors.' }, { src: './assets/video/shanghai.mp4', title: 'Shanghai', description: 'Neon lights illuminate the Bund, savor the local life in Shikumen.' }, { src: './assets/video/lianyungang.mp4', title: 'Lianyungang', description: 'Western Journey through mountains and seas, a land bridge connecting Asia and Europe.' }, { src: './assets/video/chengdu.mp4', title: 'Chengdu', description: 'Leisurely experiences in Kuan Zhai Alley; the city of Chengdu has a history spanning three thousand years.' }, { src: './assets/video/shenzhen.mp4', title: 'Shenzhen', description: 'Reform speed paves the future; mountains and seas connect the city with new trends.' }, { src: './assets/video/suzhou.mp4', title: 'Suzhou', description: 'Small bridges and flowing water allow for peaceful slumber, painting brings life to the white walls and black tiles.' }, { src: './assets/video/nanjing.mp4', title: 'Nanjing', description: 'Within the sycamore trees lies imperial power; Nanjing is half a history of Jinling.' }, { src: './assets/video/nanchang.mp4', title: 'Nanchang', description: 'The red former capital shines through time, the banks of Gan River radiate new brilliance.' }, { src: './assets/video/changsha.mp4', title: 'Changsha', description: 'The birthplace of Huxiang culture, a metropolis of modern entertainment.' }, { src: './assets/video/guangzhou.mp4', title: 'Guangzhou', description: 'Morning tea wafts fragrant, the Pearl River surges as a window to the world.' } ];
-
-        // 初始化当前展示的视频索引
-        let currentVideoIndex = 0;
-
-function createVideoElement(video) {
-    const videoItem = document.createElement('div');
-    videoItem.className = 'recommendation-item';
-    videoItem.innerHTML = `
-        <div class="video-container">
-            <video muted loop>
-              <source src="${video.src}" type="video/mp4">
-            </video>
-        </div>
-        <div class="info">
-        <h3>${video.title}</h3>
-        <p>${video.description}</p>
-        </div>
-    `;
-    // 添加播放控制
-    const videoEl = videoItem.querySelector('video');
-    const playBtn = videoItem.querySelector('.play-btn');
-    
-    videoItem.addEventListener('mouseenter', () => {
-        videoEl.play().catch(e => console.error("播放失败:", e));
+        document.getElementById('passengers').value = '1 adult';
     });
 
-    videoItem.addEventListener('mouseleave', () => {
-        videoEl.pause();
-    });
-    return videoItem;
-}
-// 展示视频的函数
-function showVideos() {
-    const recommendationGrid = document.getElementById('recommendation-grid');
-    recommendationGrid.innerHTML = '';
+    // Video recommendations
+    const allVideos = [ 
+        { src: './assets/video/beijin.mp4', title: 'Beijing', description: 'Under the royal city, clouds gather; the alleyways harbor ancient and modern flavors.' }, 
+        { src: './assets/video/shanghai.mp4', title: 'Shanghai', description: 'Neon lights illuminate the Bund, savor the local life in Shikumen.' }, 
+        { src: './assets/video/lianyungang.mp4', title: 'Lianyungang', description: 'Western Journey through mountains and seas, a land bridge connecting Asia and Europe.' }, 
+        { src: './assets/video/chengdu.mp4', title: 'Chengdu', description: 'Leisurely experiences in Kuan Zhai Alley; the city of Chengdu has a history spanning three thousand years.' }, 
+        { src: './assets/video/shenzhen.mp4', title: 'Shenzhen', description: 'Reform speed paves the future; mountains and seas connect the city with new trends.' }, 
+        { src: './assets/video/suzhou.mp4', title: 'Suzhou', description: 'Small bridges and flowing water allow for peaceful slumber, painting brings life to the white walls and black tiles.' }, 
+        { src: './assets/video/nanjing.mp4', title: 'Nanjing', description: 'Within the sycamore trees lies imperial power; Nanjing is half a history of Jinling.' }, 
+        { src: './assets/video/nanchang.mp4', title: 'Nanchang', description: 'The red former capital shines through time, the banks of Gan River radiate new brilliance.' }, 
+        { src: './assets/video/changsha.mp4', title: 'Changsha', description: 'The birthplace of Huxiang culture, a metropolis of modern entertainment.' }, 
+        { src: './assets/video/guangzhou.mp4', title: 'Guangzhou', description: 'Morning tea wafts fragrant, the Pearl River surges as a window to the world.' } 
+    ];
 
-    for (let i = 0; i < 4; i++) {
-        const index = (currentVideoIndex + i) % allVideos.length;
-        const video = allVideos[index];
-        const videoElement = createVideoElement(video);
-        recommendationGrid.appendChild(videoElement);
+    // Current video index
+    let currentVideoIndex = 0;
+
+    function createVideoElement(video) {
+        const videoItem = document.createElement('div');
+        videoItem.className = 'recommendation-item';
+        videoItem.innerHTML = `
+            <div class="video-container">
+                <video muted loop>
+                  <source src="${video.src}" type="video/mp4">
+                </video>
+            </div>
+            <div class="info">
+                <h3>${video.title}</h3>
+                <p>${video.description}</p>
+            </div>
+        `;
+        // Add playback controls
+        const videoEl = videoItem.querySelector('video');
+        const playBtn = videoItem.querySelector('.play-btn');
+        
+        videoItem.addEventListener('mouseenter', () => {
+            videoEl.play().catch(e => console.error("Playback failed:", e));
+        });
+
+        videoItem.addEventListener('mouseleave', () => {
+            videoEl.pause();
+        });
+        return videoItem;
     }
-}
 
-// 换一批按钮的点击事件处理函数
-function shuffleVideos() {
-    currentVideoIndex = (currentVideoIndex + 5) % allVideos.length;
-    showVideos();
-}
+    // Show videos function
+    function showVideos() {
+        const recommendationGrid = document.getElementById('recommendation-grid');
+        recommendationGrid.innerHTML = '';
 
-// 页面加载完成后初始化视频展示
-window.addEventListener('load', function() {
-    showVideos();
-    const shuffleBtn = document.getElementById('shuffle-btn');
-    shuffleBtn.addEventListener('click', shuffleVideos);
-});
+        for (let i = 0; i < 4; i++) {
+            const index = (currentVideoIndex + i) % allVideos.length;
+            const video = allVideos[index];
+            const videoElement = createVideoElement(video);
+            recommendationGrid.appendChild(videoElement);
+        }
+    }
 
+    // Show more button click handler
+    function shuffleVideos() {
+        currentVideoIndex = (currentVideoIndex + 5) % allVideos.length;
+        showVideos();
+    }
 
+    // Initialize video display on page load
+    window.addEventListener('load', function() {
+        showVideos();
+        const shuffleBtn = document.getElementById('shuffle-btn');
+        shuffleBtn.addEventListener('click', shuffleVideos);
+    });
 
-    // 设置默认日期为今天
+    // Set default date to today
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('depart-date').value = today;
     document.getElementById('depart-date').min = today;
     
-    // 设置返回日期最小值为出发日期
+    // Set return date minimum to departure date
     document.getElementById('depart-date').addEventListener('change', function() {
         document.getElementById('return-date').min = this.value;
     });
